@@ -27,11 +27,6 @@ y_pred_val = mlpr.predict(X_val)
 print("Mean percentage error for MLP regression : ",mean_squared_error(y_val, y_pred_val))
 
 
-## Gaussian Reggressor
-gnb = GaussianProcessRegressor(random_state=21)
-gnb.fit(X_train, y_train)
-y_GNB_pred_val = gnb.predict(X_val)
-print("Mean percentage error for Gaussian Reggressor : ", mean_squared_error(y_val, y_GNB_pred_val))
 
 print("Converged Damage paramters when only using Force and Displacement: ", mlpr.predict(np.asarray([2.01798]).reshape(1,-1)))
 print("Converged Damage paramters when only using Force and Displacement: ", mlpr.predict(np.asarray([1.27861]).reshape(1,-1)))
