@@ -165,3 +165,97 @@ ax.view_init(angle/(2.7), angle)
 plt.draw()
 plt.pause(5)
 
+color1 = ['r', 'b', 'm', 'k']
+color2 = ['or', 'ob', 'om', 'ok']
+plt.rcParams['figure.figsize'] = [10, 16]
+
+
+
+fig, axs = plt.subplots(3, 2)
+
+ax = axs[0, 0]
+for i in range(0,4):
+    ax.set_ylim([0, 0.9])
+    ax.set_xlim([0, 1])
+    ax.plot(np.linspace(-0.5, 1.5, 1000), fun_fixX(p0,localData[i][2][fractPoint[i]+1],np.linspace(-0.5, 1.5, 1000) ), color1[i], label="G" + str(i))
+    ax.plot(localData[i][1][fractPoint[i]+1], localData[i][3][fractPoint[i]+1], color2[i])
+ax.set_title("model 2" ) 
+ax.set_ylabel("Damage strain")
+ax.set_xlabel("Stress triaxility") 
+ax.legend()
+ax = axs[1, 0]
+for i in range(0,4):    
+    ax.set_ylim([0, 0.9])
+    ax.set_xlim([0, 1])
+    ax.plot(np.linspace(-0.5, 1.5, 1000), fun_fixY(p0,np.linspace(-0.5, 1.5, 1000),localData[i][1][fractPoint[i]+1]), color1[i], label="G" + str(i))
+    ax.plot(localData[i][2][fractPoint[i]+1], localData[i][3][fractPoint[i]+1], color2[i])
+    
+ax.set_title("model 2" ) 
+ax.set_ylabel("Damage strain")
+ax.set_xlabel("Lode angle parameter")
+ax.legend()
+
+
+ax = axs[2, 0]
+
+for i in range(0,4):
+    ax.set_ylim([0, 0.9])
+    ax.set_xlim([0, 1])
+    ax.plot(np.linspace(0, 1.5, 1000), fun_fixZ(p0,np.linspace(0, 1, 1000),localData[i][3][fractPoint[i]+1]), color1[i], label="G" + str(i))
+    ax.plot(localData[i][1][fractPoint[i]+1], localData[i][2][fractPoint[i]+1], color2[i])
+    
+
+ax.set_title("model 2") 
+ax.set_ylabel("Stress triaxility")
+ax.set_xlabel("Lode angle parameter")
+ax.legend()
+  
+    
+    
+    
+    
+
+ax = axs[0, 1]
+
+for i in range(0,4):
+    ax.set_ylim([0, 0.9])
+    ax.set_xlim([0, 1])
+    ax.plot(np.linspace(-0.5, 1.5, 1000), fun_fixX(pf,localData[i][2][fractPoint[i]+1],np.linspace(-0.5, 1.5, 1000) ), color1[i], label="G" + str(i))
+    ax.plot(localData[i][1][fractPoint[i]+1], localData[i][3][fractPoint[i]+1], color2[i])
+    
+
+ax.set_title("best fit (least squares)") 
+ax.set_ylabel("Damage strain")
+ax.set_xlabel("Stress triaxility")
+ax.legend()
+  
+ax = axs[1, 1]
+
+for i in range(0,4):
+    ax.set_ylim([0, 0.9])
+    ax.set_xlim([0, 1])
+    ax.plot(np.linspace(-0.5, 1.5, 1000), fun_fixY(pf,np.linspace(-0.5, 1.5, 1000),localData[i][1][fractPoint[i]+1]), color1[i], label="G" + str(i))
+    ax.plot(localData[i][2][fractPoint[i]+1], localData[i][3][fractPoint[i]+1], color2[i])
+    
+ax.set_title("best fit (least squares)") 
+ax.set_ylabel("Damage strain")
+ax.set_xlabel("Lode angle parameter")
+ax.legend()
+
+ax = axs[2, 1]
+
+for i in range(0,4):
+    ax.set_ylim([0, 0.9])
+    ax.set_xlim([0, 1])
+    ax.plot(np.linspace(0, 1.5, 1000), fun_fixZ(pf,np.linspace(0, 1, 1000),localData[i][3][fractPoint[i]+1]), color1[i], label="G" + str(i))
+    ax.plot(localData[i][1][fractPoint[i]+1], localData[i][2][fractPoint[i]+1], color2[i])
+    
+
+ax.set_title("best fit (least squares)") 
+ax.set_ylabel("Stress triaxility")
+ax.set_xlabel("Lode angle parameter")
+ax.legend()
+  
+
+plt.show()
+
