@@ -14,6 +14,4 @@ module load python-data
 rm fracture.csv
 
 echo "running P${VARIABLE}"
-rm G0_P_LS_Cr2.rpt
-rm G0_P_FD.rpt
 abq2022 viewer noGUI=G0_ODB_Script.py
